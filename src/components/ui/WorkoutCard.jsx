@@ -1,8 +1,9 @@
+import { Delete } from '@mui/icons-material'
 import DirectionsRunIcon from '@mui/icons-material/DirectionsRun'
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment'
 import MonitorHeartIcon from '@mui/icons-material/MonitorHeart'
 
-function WorkoutCard({ workout }) {
+function WorkoutCard({ workout, onDelete }) {
   const {
     user,
     time,
@@ -18,7 +19,16 @@ function WorkoutCard({ workout }) {
 
   return (
     <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
-      <div className="p-5">
+      <div className="p-5 relative">
+        {onDelete && (
+          <button 
+            onClick={() => onDelete(workout.id)}
+            className="absolute top-3 right-3 p-1 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors"
+            title="Deletar treino"
+          >
+            <Delete className='w-4 h-4' />
+          </button>
+        )}
         {/* Time */}
         <div className="mb-4">
           <span className="text-sm text-gray-600">Tempo:</span>
